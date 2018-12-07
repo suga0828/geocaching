@@ -14,11 +14,13 @@
 
 
 <ion-content padding>
-  {{lugar.nombre | uppercase}}
   <ion-list>
 
-    <ion-item>
-      <ion-label floating>Creado {{lugar.id }}</ion-label>
+    <ion-item *ngIf="user">
+      <p>Created at {{ lugar.id | date:'medium' }}</p>
+      <ion-card>
+        <img src="https://placeimg.com/150/150/nature" />
+      </ion-card>
     </ion-item>
 
     <ion-item>
