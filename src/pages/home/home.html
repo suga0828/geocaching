@@ -7,12 +7,18 @@
 </ion-header>
 
 <ion-content padding>
-  <button ion-button color="twitter" block (click)="navegarALugar('Primer Lugar')">Ir al Primer Lugar</button>
-  <button ion-button color="twitter" block (click)="navegarALugar('Segundo Lugar')">Ir al Segundo Lugar</button>
-  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit vero quia commodi laboriosam, vel in
-    exercitationem totam accusantium amet debitis? Deserunt neque eius sed rem perferendis sapiente et libero officiis.</p>
-  <p text-wrap>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit vero quia commodi laboriosam, vel in
-    exercitationem totam accusantium amet debitis? Deserunt neque eius sed rem perferendis sapiente et libero officiis.</p>
-  <p text-nowrap>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit vero quia commodi laboriosam, vel in
-    exercitationem totam accusantium amet debitis? Deserunt neque eius sed rem perferendis sapiente et libero officiis.</p>
+  <ion-list>
+
+    <ion-item *ngFor="let lugar of lugares" (click)="toDetail(lugar)">
+      <h2>{{lugar.nombre}}</h2>
+      <h3>{{lugar.direccion}}</h3>
+      <p>{{lugar.categoria}}</p>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab bottom right>
+    <button ion-fab mini (click)="toCreate()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>

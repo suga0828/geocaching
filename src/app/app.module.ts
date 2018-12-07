@@ -18,6 +18,8 @@ import { firebaseConfig } from './credentials';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
+import { LugaresService } from '../services/lugares.service';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -48,7 +50,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    LugaresService
   ]
 })
 export class AppModule {}

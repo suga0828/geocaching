@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { TerceraPage } from '../tercera/tercera';
+import { LugaresService } from '../../services/lugares.service';
 
 
 /**
@@ -18,22 +18,32 @@ import { TerceraPage } from '../tercera/tercera';
 })
 export class LugarPage {
 
-  nombreLugar: string = '';
+  lugar: any = {};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  categorias: any = {
+    AireLibre: 'Aire Libre',
+    LugarCerrado: 'Lugar Cerrado'
   }
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public lugaresService: LugaresService) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LugarPage');
-    this.nombreLugar = this.navParams.get('nombre');
+    this.lugar = this.navParams.get('lugar');
   }
 
-  navigateBack() {
+  saveLugar() {
+    if (!this.lugar.id) {
+      this.lugar.id = Date.now();
+      this.lugaresService.createLugar(this.lugar);
+    } else {
+      this.lugaresService.editLugar(this.lugar);
+    }
+    console.log(this.lugar);
     this.navCtrl.pop();
-  }
-
-  navigateThird(message) {
-    this.navCtrl.push(TerceraPage, {mensaje: message});
   }
 
 }
