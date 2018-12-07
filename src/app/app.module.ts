@@ -13,6 +13,11 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { AboutUsPage } from '../pages/about-us/about-us';
 import { TerceraPage } from '../pages/tercera/tercera';
 
+import { AngularFireModule } from '@angular/fire';
+import { firebaseConfig } from './credentials';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -25,7 +30,10 @@ import { TerceraPage } from '../pages/tercera/tercera';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig, 'GeoCaching'),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
