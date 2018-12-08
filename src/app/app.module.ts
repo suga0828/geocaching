@@ -11,7 +11,6 @@ import { LugarPage } from '../pages/lugar/lugar';
 import { PerfilPage } from '../pages/perfil/perfil';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AboutUsPage } from '../pages/about-us/about-us';
-import { TerceraPage } from '../pages/tercera/tercera';
 
 import { AngularFireModule } from '@angular/fire';
 import { firebaseConfig } from './credentials';
@@ -19,6 +18,9 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { LugaresService } from '../services/lugares.service';
+
+import { AuthenticationService } from '../services/authentication.service';
+import { LoginPage } from '../pages/login/login';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,7 @@ import { LugaresService } from '../services/lugares.service';
     PerfilPage,
     TabsPage,
     AboutUsPage,
-    TerceraPage
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -45,13 +47,14 @@ import { LugaresService } from '../services/lugares.service';
     PerfilPage,
     TabsPage,
     AboutUsPage,
-    TerceraPage
+    LoginPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    LugaresService
+    LugaresService,
+    AuthenticationService
   ]
 })
 export class AppModule {}
