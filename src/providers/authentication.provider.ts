@@ -5,7 +5,7 @@ import { Injectable } from "@angular/core";
 
 @Injectable()
 
-export class AuthenticationService {
+export class AuthenticationProvider {
   constructor(
     public afAuth: AngularFireAuth,
     public afDB: AngularFireDatabase) { }

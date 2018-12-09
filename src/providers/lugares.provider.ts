@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 
 @Injectable()
 
-export class LugaresService {
+export class LugaresProvider {
   constructor(public afDB: AngularFireDatabase) {}
 
   public getLugares() {

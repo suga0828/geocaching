@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, AlertController, ToastController } from 'ionic-angular';
 
 import { LugarPage } from '../lugar/lugar';
-import { LugaresService } from '../../services/lugares.service';
+import { LugaresProvider } from '../../providers/lugares.provider';
 
 @Component({
   selector: 'page-home',
@@ -14,13 +14,13 @@ export class HomePage {
 
   constructor(
     public navCtrl: NavController,
-    public lugaresService: LugaresService,
+    public lugaresProvider: LugaresProvider,
     public alertCtrl: AlertController,
     public toastCtrl: ToastController
   ) {}
 
   ionViewDidLoad() {
-    this.lugaresService.getLugares()
+    this.lugaresProvider.getLugares()
       .valueChanges()
         .subscribe( lugares => {
           this.lugares = lugares
@@ -45,7 +45,7 @@ export class HomePage {
           handler: () => {
             console.log('Eliminar clicked');
             let eliminated = lugar.nombre;
-            this.lugaresService.deleteLugar(lugar)
+            this.lugaresProvider.deleteLugar(lugar)
               .then( () => {
                 this.deleteToast(eliminated);
               })

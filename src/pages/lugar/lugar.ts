@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 
-import { LugaresService } from '../../services/lugares.service';
+import { LugaresProvider } from '../../providers/lugares.provider';
 
 
 /**
@@ -28,7 +28,7 @@ export class LugarPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public lugaresService: LugaresService,
+    public lugaresProvider: LugaresProvider,
     public toastCtrl: ToastController) {}
 
   ionViewDidLoad() {
@@ -39,13 +39,13 @@ export class LugarPage {
   saveLugar() {
     if (!this.lugar.id) {
       this.lugar.id = Date.now();
-      this.lugaresService.createLugar(this.lugar)
+      this.lugaresProvider.createLugar(this.lugar)
         .then( () => {
           this.operationToast(this.lugar.nombre, 'created');
         })
         .catch( error => console.log(error));
     } else {
-      this.lugaresService.editLugar(this.lugar)
+      this.lugaresProvider.editLugar(this.lugar)
         .then( () => {
           this.operationToast(this.lugar.nombre, 'edited');
         })

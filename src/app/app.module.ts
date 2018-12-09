@@ -17,9 +17,9 @@ import { firebaseConfig } from './credentials';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
-import { LugaresService } from '../services/lugares.service';
+import { LugaresProvider } from '../providers/lugares.provider';
 
-import { AuthenticationService } from '../services/authentication.service';
+import { AuthenticationProvider } from '../providers/authentication.provider';
 import { LoginPage } from '../pages/login/login';
 
 @NgModule({
@@ -53,8 +53,8 @@ import { LoginPage } from '../pages/login/login';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    LugaresService,
-    AuthenticationService
+    LugaresProvider,
+    AuthenticationProvider
   ]
 })
 export class AppModule {}

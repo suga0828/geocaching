@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, AlertController, ToastController } from 'ionic-angular';
 
-import { AuthenticationService } from '../../services/authentication.service';
+import { AuthenticationProvider } from '../../providers/authentication.provider';
 
 /**
  * Generated class for the LoginPage page.
@@ -24,7 +24,7 @@ export class LoginPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
-    public authenticationService: AuthenticationService,
+    public authenticationProvider: AuthenticationProvider,
     public viewCtrl: ViewController,
     public toastCtrl: ToastController) {
   }
@@ -38,7 +38,7 @@ export class LoginPage {
   }
 
   loginWithCredentials() {
-    this.authenticationService.login(this.email, this.password)
+    this.authenticationProvider.login(this.email, this.password)
       .then(response => {
         this.loginToast(response.operationType, response.user.email)
         this.viewCtrl.dismiss();

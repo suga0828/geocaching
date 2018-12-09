@@ -13,7 +13,7 @@ import { PerfilPage } from '../perfil/perfil';
 import { AboutUsPage } from '../about-us/about-us';
 import { LoginPage } from '../login/login';
 
-import { AuthenticationService } from '../../services/authentication.service';
+import { AuthenticationProvider } from '../../providers/authentication.provider';
 
 @IonicPage()
 @Component({
@@ -30,7 +30,7 @@ export class TabsPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public modalCtrl: ModalController,
-    public authenticationService: AuthenticationService) {
+    public authenticationProvider: AuthenticationProvider) {
   }
 
   ionViewDidLoad() {
@@ -44,7 +44,7 @@ export class TabsPage {
   }
 
   logout() {
-    this.authenticationService.logout();
+    this.authenticationProvider.logout();
   }
 
 }
